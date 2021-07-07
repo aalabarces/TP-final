@@ -1,0 +1,32 @@
+{% extends "sitio/layout.html" %}
+{% block body %}
+<h1>Resultados de la búsqueda</h1>
+
+
+{% if results %}
+<h2>Resultados para: <b>{{ request.GET.q }}</b></h1>
+<br/><br/>
+
+{% for result in results %}
+
+<div class="row mb-2">
+    <div class="col-md-6">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+            <div class="col p-4 d-flex flex-column position-static">
+                <strong class="d-inline-block mb-2 text-primary">{{ result.categoria }}</strong>
+                <h3 class="mb-0">{{ result.nombre }}</h3>
+                <div class="mb-1 text-muted">{{ result.precio }}</div>
+                <p class="card-text mb-auto">{{ result.descripcion }}</p>
+                <a href="{% url 'sitio:producto' result.id %}" class="stretched-link"></a>
+            </div>
+            <div class="col-auto d-none d-lg-block">
+                <img src="{{ media_url }}{{ result.imagen.url }}" alt="{{ result.imagen.name }}" width="200" height="200">
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+{% else %}
+No se encontraron resultados
+{% endif %}
+{% endblock %}

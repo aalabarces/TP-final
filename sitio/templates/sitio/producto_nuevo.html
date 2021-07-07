@@ -1,0 +1,32 @@
+{% extends "sitio/layout.html" %}
+{% block body %}
+<h3 class="offset-md-2">Publicar un Producto Nuevo</h3>
+<div class="col-md-7 col-lg-8 offset-md-2 align-items-center">
+    <form enctype="multipart/form-data" action="{% url 'sitio:producto_nuevo' %}" method="post" >
+        {% csrf_token %}
+        <div class="form-group row">
+            <label for="nombre_input"  class="col-sm-2 col-form-label">Nombre:</label> {{ form.nombre }} {{ form.nombre.errors }}
+        </div>
+        <div class="form-group row">
+            <label for="categoria_input"  class="col-sm-2 col-form-label">Categoria:</label> {{ form.categoria }} {{ form.categoria.errors }}
+        </div>
+        <div class="form-group row">
+            <label for="precio_input"  class="col-sm-2 col-form-label">Precio:</label> {{ form.precio }} {{ form.precio.errors }}
+        </div>
+        <div class="form-group row">
+            <label for="publicacion_input"  class="col-sm-2 col-form-label">Fecha de Publicacion:</label> {{ form.fecha_publicacion }} {{ form.fecha_publicacion.errors }}
+        </div>
+        <div class="form-group row">
+            <label for="imagen_input"  class="col-sm-2 col-form-label">Imagen Adjunta:</label> {{ form.imagen }} {{ form.imagen.errors }}
+        </div>
+        <div class="form-group row"  class="col-sm-2 col-form-label">
+            <label for="descripcion_input">Descripción del Producto:</label><br> {{ form.descripcion }} {{ form.descripcion.errors }}
+            <script>$("#id_descripcion").removeAttr("required");</script>
+        </div>
+        <div class="col-auto">
+            <a class="btn btn-secondary" type="button" href="{% url 'sitio:index'%}">Volver</a>
+            <input type="submit" class="btn btn-primary" value="Publicar">
+        </div>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends "sitio/layout.html" %}
+
+{% block body %}
+<div class="row featurette">
+    <div class="col-md-7 order-md-2">
+        <h2 class="featurette-heading">{{ producto.nombre }}</h2>
+        <h5>{{ producto.categoria }}</h5>
+        <p class="lead">{{ producto.descripcion |safe }}</p>
+        <h5>Precio: ${{ producto.precio }}</h5>
+        <a href="{% url 'carrito:agregar' producto.id %}"><button type="button" class="btn btn-sm btn-outline-secondary">Agregar al carrito</button></a>
+        <a href="{% url 'sitio:index' %}"><button type="button" class="btn btn-sm btn-outline-secondary">Volver</button></a>
+        {% if request.user.is_staff %}
+        <a href="{% url 'sitio:producto_editar' producto.id %}"><button type="button" class="btn btn-sm btn-outline-secondary">Editar</button></a>
+        <a href="{% url 'sitio:producto_eliminar' producto.id %}"><button type="button" class="btn btn-sm btn-outline-secondary">Eliminar</button></a>
+        {% endif %}
+    </div>
+    <div class="col-md-5 order-md-1">
+        <img class="img-fluid mx-auto" width="500" height="500" src="{{ media_url }}{{ producto.imagen.url }}" alt="{{ producto.imagen.name }}" />
+    </div>
+</div>
+{% endblock %}

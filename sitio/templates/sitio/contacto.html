@@ -1,0 +1,39 @@
+{% extends "sitio/layout.html" %}
+
+{% block body %}
+
+<h1 class="offset-md-2">Contáctanos</h1>
+
+<div class="col-md-7 col-lg-8 offset-md-2">
+    <form action="/contacto/" method="POST">
+    {%csrf_token%}
+    <div class="col-12">
+        <label for="nombre" class="form-label">Nombre</label>
+        <div class="input-group has-validation">
+            <input type="text" class="form-control" id="nombre" placeholder="Nombre" required>
+        <div class="invalid-feedback">
+            Este campo es obligatorio
+            </div>
+        </div>
+    </div>
+    <div class="col-12">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" class="form-control" id="email" placeholder="email@ejemplo.com" required>
+        <div class="invalid-feedback">
+            Este campo es obligatorio
+        </div>
+    </div>
+    <div class="col-12">
+        <label for="asunto" class="form-label">Asunto</label>
+        <input type="asunto" class="form-control" id="asunto" placeholder="Asunto">
+    </div>
+    <div class="mb-3">
+        <label for="texto" class="form-label">Inserte aquí su mensaje</label>
+        <textarea class="form-control" id="texto" rows="3"></textarea>
+    </div>
+    <hr class="my-4">
+    <!--<button class="w-100 btn btn-primary btn-lg" type="submit" value="Enviar">Enviar</button>-->
+    <input type="submit" class="w-100 btn btn-primary btn-lg" value="Enviar">
+    </form>
+</div>
+{% endblock %}
