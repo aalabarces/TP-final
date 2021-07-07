@@ -7,11 +7,11 @@ class FormProducto(forms.ModelForm):
     #campos del modelo
     class Meta:
         model = Producto
-        fields = ('categoria', 'nombre', 'precio', 'descripcion', 'imagen')
+        fields = ('categoria', 'nombre', 'precio', 'descripcion', 'imagen', 'fecha_publicacion')
         widgets = {
             'nombre': forms.TextInput(attrs={'class': 'pub_nombre'}),
             'precio': forms.NumberInput(attrs={'class': 'pub_precio'}),
             'imagen': forms.FileInput(attrs={'name':'imagen_adjunta', 'class': 'pub_imagen'}),
             'descripcion': forms.TextInput(attrs={'class': 'pub_descripcion'}),
-            #'fecha_publicacion': forms.SelectDateWidget(attrs={'class': 'pub_fecha_publicacion'}),
+            'fecha_publicacion': forms.SelectDateWidget(attrs={'class': 'pub_fecha_publicacion'}),
         }

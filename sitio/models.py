@@ -19,7 +19,7 @@ class Producto(models.Model):
     categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE, related_name="categoria")
     imagen = models.FileField(upload_to='imagenes/')
     descripcion = models.CharField(max_length=500)
-    #fecha_publicacion = models.DateField(null=False)
+    fecha_publicacion = models.DateField(null=False, default=timezone.now())
 
     def __str__(self):
         return f"{self.nombre}"

@@ -16,12 +16,9 @@
                         <a href="{% url 'carrito:quitar' value.producto_id %}" class="btn btn-sm btn-success">-</a></small>
                     </div>
                     <span class="text-muted">${{ value.precio }}</span>
+                    <small class="text-muted"><a href="{% url 'carrito:eliminar' value.producto_id %}"class="btn btn-sm btn-success">X</a></small>
                 </li>
             {% endfor %}
-                <li class="list-group-item d-flex justify-content-between">
-                    <span>Total:</span>
-                    <strong>${{ importe_total }}</strong>
-                </li>
                 <li class="list-group-item d-flex justify-content-between">
                     <a role="button" class="btn btn-primary me-2" href="#">Finalizar compra</a>
                     <a role="button" class="btn btn-secondary me-2" href="{% url 'carrito:limpiar' %}">Vaciar carrito</a>

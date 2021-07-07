@@ -12,11 +12,14 @@ from carrito.models import Carrito
 
 # Create your views here.
 def index(request):
-
+    lista_orden = Producto.objects.order_by('fecha_publicacion')[:3]
+    lista2_orden = Producto.objects.order_by('fecha_publicacion')[:10]
+    listafin = list(set(lista_orden).difference(lista2_orden))
     return render(request, 'sitio/index.html', {
         "lista_productos": Producto.objects.all(),
         "lista_categorias": Categoria.objects.all(),
-
+        "lista_orden": lista_orden,
+        "listafin": lista2_orden
     })
 
 def producto(request, producto_id):

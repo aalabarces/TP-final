@@ -8,7 +8,7 @@
     <h2 class="pb-2 border-bottom">Productos</h2>
     {% endif %}
     <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
-        {% for un_producto in lista_productos %}
+        {% for un_producto in lista_orden %}
         <div class="feature col">
             <div class="feature-icon bg-primary bg-gradient">
                 <img>
@@ -20,29 +20,43 @@
             <a href="{% url 'sitio:producto' un_producto.id %}" class="icon-link">Ver más</a>
             </a>
         </div>
-        {%endfor%}
+        {% endfor %}
+        {% if 'filtro_categorias' in request.path %}
+            {% for un_producto in lista_productos %}
+            <div class="feature col">
+                <div class="feature-icon bg-primary bg-gradient">
+                    <img>
+                </div>
+                <h2>{{ un_producto }}</h2>
+                <img src="{{ media_url }}{{ un_producto.imagen.url }}" alt="{{ un_producto.imagen.name }}" height="100em" width="100em">
+                <h4>${{ un_producto.precio }}</h4>
+                <p>{{ un_producto.descripcion }}</p>
+                <a href="{% url 'sitio:producto' un_producto.id %}" class="icon-link">Ver más</a>
+                </a>
+            </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+
+    <div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Producto</th>
+                    <th scope="col">Precio</th>
+                    <th scope="col">Descripcion</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for un_producto in listafin %}
+                <tr>
+                    <td><a href="{% url 'sitio:producto' un_producto.id %}" class="icon-link">{{un_producto.nombre}}</a></td>
+                    <td>{{un_producto.precio}}</td>
+                    <td>{{un_producto.descripcion}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
 </div>
-<!--<div>
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Producto</th>
-                <th scope="col">Precio</th>
-                <th scope="col">Descripcion</th>
-            </tr>
-        </thead>
-        <tbody>
-            
-            <tr>
-            <th scope="row"></th>
-                <td>{{un_producto.nombre}}</td>
-                <td>{{un_producto.precio}}</td>
-                <td>{{un_producto.descripcion}}</td>
-            </tr>
-            
-        </tbody>
-    </table>
-</div>-->
 {% endblock %}

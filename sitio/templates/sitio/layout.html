@@ -24,7 +24,7 @@
         
                 <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
                     <li><a href="{% url 'sitio:index' %}" class="nav-link px-2 text-white">Inicio</a></li>
-                    <li><a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false"">Categorías</a>
+                    <li><a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false">Categorías</a>
                         <ul class="dropdown-menu" aria-labelledby="dropdown01">
                             {% for categ in lista_categorias %}
                             <a class="dropdown-item" href="{% url 'sitio:filtro_categorias' categ.id %}">{{ categ }}</a>
